@@ -1,4 +1,4 @@
-import twitter
+import tweepy
 import twitter_secret as secret
 
 consumer_key = secret.twitter_consumer_key
@@ -6,11 +6,24 @@ consumer_secret = secret.twitter_consumer_secret
 access_token = secret.twitter_access_token
 access_secret = secret.twitter_access_secret
 
-twitter_api = twitter.Api(consumer_key=consumer_key,
-            consumer_secret=consumer_secret,
-            access_token_key=access_token,
-            access_token_secret=access_secret)
+def connect_api():
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_secret)
 
-account = "@Sonny7"
-status = twitter_api.GetUserTimeline(screen_name=account, count=500, include_rts=True, exclude_replies=False)
-print(status)
+    api = tweepy.API(auth)
+
+    return api
+
+
+def UserTimelineCursor(screen_name):
+    tweets = tweepy.Cursor(api.user_timeline, screen_name=screen_name, tweet_mode="extended")
+    return tweets
+
+
+api = connect_api()
+son_timeline = UserTimelineCursor('@Sonny7')
+
+i = 0
+for each_tweet in son_timeline.items():
+    print(f"{i}번째 트윗 : {each_tweet.full_text}")
+    i += 1
