@@ -14,16 +14,12 @@ def connect_api():
 
     return api
 
-
 def UserTimelineCursor(screen_name):
     tweets = tweepy.Cursor(api.user_timeline, screen_name=screen_name, tweet_mode="extended")
     return tweets
 
-
 api = connect_api()
-son_timeline = UserTimelineCursor('@Sonny7')
+query = '@Sonny7 filter:replies since:2022-05-08 until:2022-05-09'
 
-i = 0
-for each_tweet in son_timeline.items():
-    print(f"{i}번째 트윗 : {each_tweet.full_text}")
-    i += 1
+for status in tweepy.Cursor(api.search_tweets, q=query, lang='en').items():
+    print(status.text)
