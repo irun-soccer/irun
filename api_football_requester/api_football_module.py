@@ -55,6 +55,32 @@ def main():
         fixture_dict[fixture_info['id']]['team']['home'] = fixture_team_info['home']['id']
         fixture_dict[fixture_info['id']]['team']['away'] = fixture_team_info['away']['id']
         fixture_dict[fixture_info['id']]['score'] = fixture_score['fulltime']
+
+    print("Crawling On Process Total " + str(len(fixture_dict)) + " fixture player information..")
+    lineup_url = "https://api-football-v1.p.rapidapi.com/v3/fixtures/lineups"
+    for key, values in fixture_dict.items():
+        lineup_url_with_fixture = lineup_url + "?fixture=" + str(key)
+        print("Crawling fixture info by id = " + str(key) + " ...")
+        lineup_info_json = get_response_as_json(lineup_url_with_fixture, headers, "")
+        fixture_dict[key]['player'] = dict()
+        home_team_id = fixture_dict[key]['team']['home']
+        away_team_id = fixture_dict[key]['team']['away']
+        fixture_dict[key]['player']['home'] = list()
+        fixture_dict[key]['player']['away'] = list()
+        try:
+            for k in range(2):
+                if lineup_info_json['response'][k]['team']['id'] == home_team_id:
+                    for i in range(len(lineup_info_json['response'][k]['startXI'])):
+                        fixture_dict[key]['player']['home'].append(lineup_info_json['response'][k]['startXI'][i]['player']['name'])
+                    for i in range(len(lineup_info_json['response'][k]['substitutes'])):
+                        fixture_dict[key]['player']['home'].append(lineup_info_json['response'][k]['substitutes'][i]['player']['name'])
+                elif lineup_info_json['response'][k]['team']['id'] == away_team_id:
+                    for i in range(len(lineup_info_json['response'][k]['startXI'])):
+                        fixture_dict[key]['player']['away'].append(lineup_info_json['response'][k]['startXI'][i]['player']['name'])
+                    for i in range(len(lineup_info_json['response'][k]['substitutes'])):
+                        fixture_dict[key]['player']['away'].append(lineup_info_json['response'][k]['substitutes'][i]['player']['name'])
+        except KeyError:
+            print("KeyError at fixture number + " + str(key) + ". Please wait and retry.")
     print(fixture_dict)
 
 
