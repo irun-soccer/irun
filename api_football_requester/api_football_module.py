@@ -2,6 +2,7 @@ import api_football_secret as secret
 import requests
 import json
 from collections import defaultdict
+from datetime import date, datetime, timedelta
 
 
 def get_response_as_json(url, headers, query):
@@ -32,9 +33,8 @@ def main():
         team_code = int(team_info_json['response'][i]['team']['id'])
         team_name_dict[team_code] = team_name
 
-
     fixture_url = "https://api-football-v1.p.rapidapi.com/v3/fixtures"
-    fixture_query_string = {"league" : "39", "season": "2021"}
+    fixture_query_string = {"league" : "39", "season": "2021", "from": datetime.strftime((datetime.now() - timedelta(7)), "%Y-%m-%d"), "to": date.today().strftime("%Y-%m-%d")}
     # print(json.dumps(get_response_as_json(fixture_url, headers, fixture_query_string), indent=2))
     fixture_info_json = get_response_as_json(fixture_url, headers, fixture_query_string)
     fixture_dict = defaultdict(dict)
@@ -56,8 +56,8 @@ def main():
         fixture_dict[fixture_info['id']]['team']['away'] = fixture_team_info['away']['id']
         fixture_dict[fixture_info['id']]['score'] = fixture_score['fulltime']
 
-    print("Crawling On Process Total " + str(len(fixture_dict)) + " fixture player information..")
     lineup_url = "https://api-football-v1.p.rapidapi.com/v3/fixtures/lineups"
+    print("Crawling On Process Total " + str(len(fixture_dict)) + " fixture player information..")
     for key, values in fixture_dict.items():
         lineup_url_with_fixture = lineup_url + "?fixture=" + str(key)
         print("Crawling fixture info by id = " + str(key) + " ...")
@@ -81,6 +81,9 @@ def main():
                         fixture_dict[key]['player']['away'].append(lineup_info_json['response'][k]['substitutes'][i]['player']['name'])
         except KeyError:
             print("KeyError at fixture number + " + str(key) + ". Please wait and retry.")
+        except IndexError:
+            print("Index out of Range " + str(key) + " Please try again.")
+        print(fixture_dict[key])
     print(fixture_dict)
 
 
