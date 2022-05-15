@@ -57,6 +57,7 @@ def main():
         fixture_dict[fixture_info['id']]['score'] = fixture_score['fulltime']
 
     lineup_url = "https://api-football-v1.p.rapidapi.com/v3/fixtures/lineups"
+    print("Getting fixture data from " + datetime.strftime((datetime.now() - timedelta(7)), "%Y-%m-%d") + " to " + date.today().strftime("%Y-%m-%d"))
     print("Crawling On Process Total " + str(len(fixture_dict)) + " fixture player information..")
     for key, values in fixture_dict.items():
         lineup_url_with_fixture = lineup_url + "?fixture=" + str(key)
@@ -82,10 +83,17 @@ def main():
         except KeyError:
             print("KeyError at fixture number + " + str(key) + ". Please wait and retry.")
         except IndexError:
-            print("Index out of Range " + str(key) + " Please try again.")
-        print(fixture_dict[key])
-    print(fixture_dict)
+            print("Index out of range " + str(key) + ". May be fixture not started yet?")
+        # print(fixture_dict[key])
 
+    result_file_name = "api_football_requester/result.json"
+    result = json.dumps(fixture_dict)
+    result_file = open(result_file_name, "w")
+    result_file.write(result)
+    result_file.close()
+
+    print("\nJob Finished.")
+    
 
 if __name__ == "__main__":
     main()
