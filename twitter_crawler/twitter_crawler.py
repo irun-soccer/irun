@@ -18,10 +18,10 @@ def next_date(now_date):
     next_date = now_date + datetime.timedelta(days=1)
     return next_date.isoformat()
 
-def GetReplies(player_name, match_date):
+def get_replies(player_name, match_date):
+    result = list()
     api = connect_api()
     query = f'{player_name} filter:replies since:{match_date} until:{next_date(match_date)}'
     for status in tweepy.Cursor(api.search_tweets, q=query, lang='en', tweet_mode='extended').items():
-        print(status.full_text)
-
-GetReplies('Harry Kane', '2022-05-13')
+        result.append(status.full_text)
+    return result
