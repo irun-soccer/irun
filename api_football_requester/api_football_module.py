@@ -1,6 +1,7 @@
 import api_football_secret as secret
 import requests
 import json
+import io
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 
@@ -85,13 +86,12 @@ def main():
             print("KeyError at fixture number + " + str(key) + ". Please wait and retry.")
         except IndexError:
             print("Index out of range " + str(key) + ". May be fixture not started yet?")
-        # print(fixture_dict[key])
+        print(fixture_dict[key])
 
     result_file_name = "api_football_requester/result.json"
     result = json.dumps(fixture_dict)
-    result_file = open(result_file_name, "w")
-    result_file.write(result)
-    result_file.close()
+    with io.open(result_file_name, "w", encoding='utf-8') as result_file:
+        result_file.write(result)
 
     print("\nJob Finished.")
     
