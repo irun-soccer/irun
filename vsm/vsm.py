@@ -42,6 +42,6 @@ for name in docs_name_list:
 for name, word_list in docs_tf.items():
     docs_tf_idf[name] = {}
     for word, tf in word_list.items():
-        docs_tf_idf[name][word] = tf * math.log(docs_num / (1 + docs_df[word]))
+        docs_tf_idf[name][word] = tf * math.log1p(docs_num / (docs_df[word]))
 
 print(docs_tf_idf)
