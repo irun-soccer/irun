@@ -23,9 +23,9 @@ def get_replies(player_name, match_date):
     api = tweepy.API(auth, timeout=600)
     query = f'{player_name} filter:replies since:{match_date} until:{next_date(match_date)}'
     
-    if req_cnt >= 120:
+    if req_cnt >= 100:
         print("... almost limit: sleep 1000 sec...")
-        time.sleep(1000)
+        time.sleep(910)
         req_cnt = 0
 
     for status in tweepy.Cursor(api.search_tweets, q=query, lang='en', tweet_mode='extended', count=180).items():

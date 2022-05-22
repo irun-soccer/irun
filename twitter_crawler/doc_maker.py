@@ -3,12 +3,17 @@ import json
 import twitter_crawler
 from tensorflow.keras.preprocessing.text import text_to_word_sequence
 
+with open('twitter_crawler/stopwords.txt', 'r') as f:
+    stopwords = set(f.read().split())
+
 def get_date(datetime):
     return datetime[:10] # YYYY-MM-DD
 
 def pre_process(text):
     text = re.sub('@.+', '', text) # remove mention
-    tokens = text_to_word_sequence(text) # tokenize (+ remove stopword)
+    text = re.sub('https.+', '', text) # remove address
+    tokens = text_to_word_sequence(text) # tokenize
+    tokens = list(filter(lambda x: x not in stopwords, tokens)) # remove stopword
     return tokens
 
 def make_doc(match_json_file, corpus_path):
@@ -18,6 +23,10 @@ def make_doc(match_json_file, corpus_path):
     for i, match in enumerate(json_data):
         date = get_date(json_data[match]['date'])
         print(f"\n[Match {i+1} on {date}]")
+
+        if json_data[match]['state'] == 'Not Started':
+            print("This match will start on", json_data[match]['data'])
+            continue
 
         ratings = dict()
         ratings.update(json_data[match]['player']['home'])
