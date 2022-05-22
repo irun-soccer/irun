@@ -3,7 +3,7 @@ import math
 team irun
 vsm model
 """
-docs_name_list = ["5~6", "6~7", "7~8", "8~10"]
+docs_name_list = ["0.0-6.5", "6.5-7.0", "7.0-7.5", "7.5-8.0", "8.0-8.5", "8.5-9.9"]
 
 # 특정 문서 d 에서의 특정 단어 t 의 등장 횟수. docs_tf[d][t] = num
 docs_tf = {}
