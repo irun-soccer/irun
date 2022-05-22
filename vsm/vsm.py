@@ -82,8 +82,8 @@ def run(query):
     # print cos sim
     for key, value in cos_sim.items():
         print(key, ": ", value)
-    return max(cos_sim, key=cos_sim.get)
+    return "relevant docs: " + max(cos_sim, key=cos_sim.get)
 
 
 make_tf_idf_docs()
-print("relevant docs:", run("nice"))
+# print("relevant docs:", run("nice"))
