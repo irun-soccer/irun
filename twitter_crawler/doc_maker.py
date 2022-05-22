@@ -10,11 +10,18 @@ def get_date(datetime):
     return datetime[:10] # YYYY-MM-DD
 
 def pre_process(text):
-    text = re.sub('@.+', '', text) # remove mention
-    text = re.sub('https.+', '', text) # remove address
+    text = re.sub('’', "'", text) # replace single quotation marks
+    text = re.sub('(@[A-Za-z0-9]+)|(\w+:\/\/\S+)', '', text) # remove mention, link
     tokens = text_to_word_sequence(text) # tokenize
     tokens = list(filter(lambda x: x not in stopwords, tokens)) # remove stopword
     return tokens
+
+def get_interval_doc(rating):
+    point = 6.0
+    while point < 10.0:
+        if rating < point:
+            return '~{:.1f}.txt'.format(point)
+        point += 0.2
 
 def make_doc(match_json_file, corpus_path):
     with open(match_json_file, 'r') as f:
@@ -38,19 +45,21 @@ def make_doc(match_json_file, corpus_path):
 
             replies = twitter_crawler.get_replies(player, date)
 
-            rating = float(rating)
-            if rating < 6.5:
-                interval_document = "0.0-6.5.txt"
-            elif rating < 7.0:
-                interval_document = "6.5-7.0.txt"
-            elif rating < 7.5:
-                interval_document = "7.0-7.5.txt"
-            elif rating < 8.0:
-                interval_document = "7.5-8.0.txt"
-            elif rating < 8.5:
-                interval_document = "8.0-8.5.txt"
-            else:
-                interval_document = "8.5-9.9.txt"
+            # rating = float(rating)
+            # if rating < 6.5:
+            #     interval_document = "0.0-6.5.txt"
+            # elif rating < 7.0:
+            #     interval_document = "6.5-7.0.txt"
+            # elif rating < 7.5:
+            #     interval_document = "7.0-7.5.txt"
+            # elif rating < 8.0:
+            #     interval_document = "7.5-8.0.txt"
+            # elif rating < 8.5:
+            #     interval_document = "8.0-8.5.txt"
+            # else:
+            #     interval_document = "8.5-9.9.txt"
+
+            interval_document = get_interval_doc(float(rating))
 
             print(f"Now crawling {player}, reply_num: {len(replies)}, rating: {rating} -> {interval_document}")
             if len(replies) == 0:
@@ -64,4 +73,4 @@ def make_doc(match_json_file, corpus_path):
                             f.write(token + ' ')
                         f.write('\n')
 
-make_doc('api_football_requester/result_220515_220522.json', 'corpus/')
+make_doc('api_football_requester/result_220515_220522.json', 'corpus2/')
