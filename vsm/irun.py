@@ -1,6 +1,6 @@
 import vsm
 
-query_name = "Thibaut Courtois_9.0.txt"
+query_name = "Federico Valverde_7.4.txt"
 
 f = open(r'./test_query/' + query_name, 'rt', encoding='utf-8')
 query = []

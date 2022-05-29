@@ -18,7 +18,7 @@ NAME = 'Thibaut Courtois_9.0.txt'
 DATE = '2022-05-28'
 RATING = '9.0'
 
-with open(f'vsm/test_query/{NAME}_{RATING}2.txt', 'a',  encoding='UTF-8') as ff:
+with open(f'vsm/test_query/{NAME}_{RATING}.txt', 'a',  encoding='UTF-8') as ff:
     replies = get_replies(NAME, DATE)
     for text in replies:
         text = re.sub('[“”‘]', "", text)
