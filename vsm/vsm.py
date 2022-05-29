@@ -14,26 +14,39 @@ docs_tf = {}
 # 특정 단어 t 가 등장한 문서의 수. docs_df[t] = num
 docs_df = {}
 # docs_tf_idf = {}
+LIMIT = 5000
+
+stopword = []
 
 
 def make_tf_idf_docs():
     docs_num = 0
-    # 각 문서의 전처리는 전부 되어 있다고 가정함.
+    if not stopword:
+        f = open(r'stopwords.txt', "rt", encoding='utf-8')
+        s_word = f.readline()
+        while True:
+            if s_word == "":
+                break
+            stopword.append(s_word.strip())
+            s_word = f.readline()
+        f.close()
+
     for name in docs_name_list:
         docs_num += 1
         f = open(r'../corpus/'+name+'.txt', "rt", encoding='utf-8')
         docs_tf[name] = {}
-
+        corpus = []
         docs_len = 0
         while True:
             line = f.readline()
+            corpus.append(line)
             if line == "":
                 break
             elif line == "\n":
                 continue
 
             for word in line.strip().split(" "):
-                if word == "":
+                if word == "" or word in stopword:
                     continue
                 docs_len += 1
                 word = word.lower()
@@ -44,13 +57,15 @@ def make_tf_idf_docs():
                     docs_tf[name][word] = 1
                     if word not in docs_df:
                         docs_df[word] = 0
-        if len(docs_tf[name]) > 6000:
+
+        if len(docs_tf[name]) > LIMIT:
             docs_len = 0
             sorted_dict = sorted(docs_tf[name].items(), key=lambda x: x[1], reverse=True)
             docs_tf[name] = {}
-            for key, value in sorted_dict[:6000]:
+            for key, value in sorted_dict[:LIMIT]:
                 docs_tf[name][key] = value
                 docs_len += value
+
         # normalize
         for word, tf in docs_tf[name].items():
             docs_tf[name][word] = np.exp(tf / docs_len)

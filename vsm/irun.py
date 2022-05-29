@@ -1,6 +1,6 @@
 import vsm
 
-query_name = "alaba_7.5.txt"
+query_name = "Mohamed Salah_7.2.txt"
 f = open(r'./test_query/' + query_name, 'rt', encoding='utf-8')
 query = []
 while True:
