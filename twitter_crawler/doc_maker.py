@@ -10,6 +10,7 @@ def get_date(datetime):
     return datetime[:10] # YYYY-MM-DD
 
 def pre_process(text):
+    text = re.sub('[“”‘]', "", text)
     text = re.sub('’', "'", text) # replace single quotation marks
     text = re.sub('(@[A-Za-z0-9_]+)|(\w+:\/\/\S+)', '', text) # remove mention, link
     tokens = text_to_word_sequence(text) # tokenize
