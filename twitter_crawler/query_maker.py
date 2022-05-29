@@ -14,7 +14,7 @@ def get_player_nameset(match_json_file):
             names.update(map(lambda x: x.lower(), player_name.split()))
     return names
 
-NAME = 'Thibaut Courtois_9.0.txt'
+NAME = 'Thibaut Courtois'
 DATE = '2022-05-28'
 RATING = '9.0'
 
