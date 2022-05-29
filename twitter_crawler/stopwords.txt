@@ -443,7 +443,7 @@ heres
 hereupon
 hers
 herself
-herse¡±
+herseï¿½ï¿½
 hes
 hi
 hid
@@ -452,7 +452,7 @@ higher
 highest
 him
 himself
-himse¡±
+himseï¿½ï¿½
 his
 hither
 hk
@@ -529,7 +529,7 @@ itd
 itll
 its
 itself
-itse¡±
+itseï¿½ï¿½
 ive
 j
 je
@@ -668,7 +668,7 @@ mw
 mx
 my
 myself
-myse¡±
+myseï¿½ï¿½
 mz
 n
 na
@@ -1294,3 +1294,23 @@ za
 zero
 zm
 zr
+arsenal
+aston villa
+brentford
+brighton and hove albion
+burnley
+chelsea
+crystal palace
+everton
+leeds united
+leicester city
+liverpool
+manchester city
+manchester united
+newcastle united
+norwich city
+southampton
+tottenham hotspur
+watford
+west ham united
+wolverhampton wanderers
