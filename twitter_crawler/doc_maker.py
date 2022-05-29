@@ -82,5 +82,6 @@ def make_doc(match_json_file, corpus_path):
                         f.write('\n')
 
 # make_doc('api_football_requester/result_220522_220529.json', 'corpus/')
-make_doc('api_football_requester/result_la_liga_220523_220529.json', 'corpus/')
+# make_doc('api_football_requester/result_la_liga_220523_220529.json', 'corpus/')
 # make_doc('api_football_requester/result_seria_a_220523_220529.json', 'corpus/')
+make_doc('api_football_requester/result_msl_220523_220529.json', 'corpus/')
