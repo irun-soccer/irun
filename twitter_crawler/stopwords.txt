@@ -132,7 +132,6 @@ believe
 below
 beside
 besides
-best
 better
 between
 beyond
@@ -387,17 +386,12 @@ go
 goes
 going
 gone
-good
-goods
 got
 gotten
 gov
 gp
 gq
 gr
-great
-greater
-greatest
 greetings
 group
 grouped
@@ -579,8 +573,6 @@ let
 let's
 lets
 li
-like
-liked
 likely
 likewise
 line
@@ -800,7 +792,6 @@ pl
 place
 placed
 places
-please
 plus
 pm
 pmid
@@ -827,7 +818,6 @@ probably
 problem
 problems
 promptly
-proud
 provided
 provides
 pt
@@ -847,7 +837,6 @@ rather
 rd
 re
 readily
-really
 reasonably
 recent
 recently
@@ -1181,7 +1170,6 @@ webpage
 website
 wed
 welcome
-well
 wells
 went
 were
@@ -1314,3 +1302,6 @@ tottenham hotspur
 watford
 west ham united
 wolverhampton wanderers
+season
+league
+barca
