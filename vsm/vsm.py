@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 team irun
 vsm model
 """
-docs_name_list = ["0.0-6.5", "6.5-7.0", "7.0-7.5", "7.5-8.0", "8.0-8.5", "8.5-9.9"]
+docs_name_list = ["0.0-6.5", "6.5-7.0", "7.0-7.5", "7.5-8.0", "8.0-9.9"]
 # docs_name_list = ["~6.0", "~6.2", "~6.4", "~6.6", "~6.8", "~7.0", "~7.2", "~7.4",
 #                  "~7.6", "~7.8", "~8.0", "~8.2", "~8.4", "~8.6", "~8.8", "~9.0",
 #                  "~9.4"]
@@ -14,7 +14,7 @@ docs_tf = {}
 # 특정 단어 t 가 등장한 문서의 수. docs_df[t] = num
 docs_df = {}
 # docs_tf_idf = {}
-LIMIT = 5000
+LIMIT = 3265
 
 stopword = []
 
@@ -66,9 +66,6 @@ def make_tf_idf_docs():
                 docs_tf[name][key] = value
                 docs_len += value
 
-        # normalize
-        for word, tf in docs_tf[name].items():
-            docs_tf[name][word] = np.exp(tf / docs_len)
         f.close()
 
     return docs_tf
