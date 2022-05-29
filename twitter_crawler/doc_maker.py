@@ -18,25 +18,25 @@ def pre_process(text):
 
 def get_interval_doc(rating):
     # [0.2 interval]
-    # point = 6.0
-    # while point < 10.0:
-    #     if rating < point:
-    #         return '~{:.1f}.txt'.format(point)
-    #     point += 0.2
+    point = 6.0
+    while point < 10.0:
+        if rating < point:
+            return '~{:.1f}.txt'.format(point)
+        point += 0.2
         
-    # [0.5 interval]
-    if rating < 6.5:
-        return "0.0-6.5.txt"
-    elif rating < 7.0:
-        return "6.5-7.0.txt"
-    elif rating < 7.5:
-        return "7.0-7.5.txt"
-    elif rating < 8.0:
-        return "7.5-8.0.txt"
-    elif rating < 8.5:
-        return "8.0-8.5.txt"
-    else:
-        return "8.5-9.9.txt"
+    # # [0.5 interval]
+    # if rating < 6.5:
+    #     return "0.0-6.5.txt"
+    # elif rating < 7.0:
+    #     return "6.5-7.0.txt"
+    # elif rating < 7.5:
+    #     return "7.0-7.5.txt"
+    # elif rating < 8.0:
+    #     return "7.5-8.0.txt"
+    # elif rating < 8.5:
+    #     return "8.0-8.5.txt"
+    # else:
+    #     return "8.5-9.9.txt"
 
 def make_doc(match_json_file, corpus_path):
     with open(match_json_file, 'r') as f:
@@ -76,4 +76,4 @@ def make_doc(match_json_file, corpus_path):
                             f.write(token + ' ')
                         f.write('\n')
 
-make_doc('api_football_requester/result_220522_220529.json', 'corpus/')
+make_doc('api_football_requester/result_220522_220529.json', 'corpus2/')
