@@ -1,6 +1,6 @@
 import vsm
 
-f = open(r'test_input.txt', 'rt', encoding='utf-8')
+f = open(r'test_input2.txt', 'rt', encoding='utf-8')
 query = []
 while True:
     line = f.readline()
