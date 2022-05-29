@@ -49,7 +49,7 @@ def make_doc(match_json_file, corpus_path):
         print(f"\n[Match {i+1} on {date}]")
 
         if json_data[match]['state'] == 'Not Started':
-            print("This match will start on", json_data[match]['data'])
+            print("This match will start on", json_data[match]['date'])
             continue
 
         ratings = dict()
