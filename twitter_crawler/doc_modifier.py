@@ -27,5 +27,3 @@ def modify_docs(corpus_path):
                 modifed_tokens.append(token)
         with open(os.path.join(corpus_path, filename), 'w', encoding='UTF-8') as f:
             f.write(' '.join(modifed_tokens))
-
-modify_docs('corpus2')

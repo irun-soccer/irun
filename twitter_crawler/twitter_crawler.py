@@ -27,4 +27,4 @@ def get_replies(player_name, match_date):
     return result
 
 if __name__ == "__main__":
-    print(get_replies('Timothy Castagne', '2022-05-22'))
+    print(get_replies('Aubameyang', '2022-05-23'))
