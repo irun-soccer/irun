@@ -38,21 +38,28 @@ def make_tf_idf_docs():
                 docs_len += 1
                 word = word.lower()
                 # get tf value
-                if word in docs_tf:
+                if word in docs_tf[name]:
                     docs_tf[name][word] += 1
                 else:
                     docs_tf[name][word] = 1
                     if word not in docs_df:
                         docs_df[word] = 0
+        if len(docs_tf[name]) > 6000:
+            docs_len = 0
+            sorted_dict = sorted(docs_tf[name].items(), key=lambda x: x[1], reverse=True)
+            docs_tf[name] = {}
+            for key, value in sorted_dict[:6000]:
+                docs_tf[name][key] = value
+                docs_len += value
         # normalize
         for word, tf in docs_tf[name].items():
-            docs_tf[name][word] = tf / docs_len
+            docs_tf[name][word] = np.exp(tf / docs_len)
         f.close()
 
     return docs_tf
 
 
-def run(query):
+def run(query, query_name=""):
     if len(docs_tf) == 0:
         print("please make if-idf docs first.")
         return
@@ -86,7 +93,7 @@ def run(query):
     x, y = [], []
     # print cos sim
     for key, value in cos_sim.items():
-        print(key, ": ", value)
+        print(key, ": ", value, len(docs_tf[key]))
         tmp = key.split("-")
         if tmp[0] == "0.0":
             tmp[0] = "5.0"
@@ -95,10 +102,7 @@ def run(query):
 
     # plot
     plt.figure(figsize=(8, 8))
-    if len(query) < 30:
-        plt.title("cosine similarity, query: " + query)
-    else:
-        plt.title("cosine similarity")
+    plt.title("cosine similarity, query: " + query_name)
 
     plt.plot(x, y)
     plt.tight_layout()
