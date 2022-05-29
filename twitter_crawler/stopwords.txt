@@ -1284,24 +1284,37 @@ zm
 zr
 arsenal
 aston villa
+villa
+aston
 brentford
 brighton and hove albion
+brighton
 burnley
 chelsea
 crystal palace
 everton
 leeds united
+leeds
 leicester city
+leicester
 liverpool
 manchester city
 manchester united
+manchester
 newcastle united
+newcastle
 norwich city
+norwich
 southampton
 tottenham hotspur
+tottenham
+hotspur
 watford
 west ham united
+westham
 wolverhampton wanderers
+wanderers
+wolverhampton
 season
 league
 barca
