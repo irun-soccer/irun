@@ -116,14 +116,19 @@ def run(query, query_name=""):
         y.append(value)
 
     # plot
-    # plt.figure(figsize=(8, 8))
-    # plt.title("cosine similarity, query: " + query_name)
+    plt.figure(figsize=(8, 8))
+    plt.title("cosine similarity, query: " + query_name)
 
-    # plt.plot(x, y)
-    # plt.tight_layout()
+    plt.plot(x, y)
+    plt.tight_layout()
     # plt.show()
+    plt.savefig('./image.jpg')
 
     return "relevant docs: " + max(cos_sim, key=cos_sim.get)
+
+
+def get_image_name():
+    return "./image.jpg"
 
 
 make_tf_idf_docs()
