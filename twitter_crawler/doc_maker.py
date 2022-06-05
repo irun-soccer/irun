@@ -32,10 +32,8 @@ def get_interval_doc(rating):
         return "7.0-7.5.txt"
     elif rating < 8.0:
         return "7.5-8.0.txt"
-    elif rating < 8.5:
-        return "8.0-8.5.txt"
     else:
-        return "8.5-9.9.txt"
+        return "8.0-9.9.txt"
 
 
 def make_doc(match_json_file, corpus_path):
@@ -84,4 +82,4 @@ def make_doc(match_json_file, corpus_path):
 # make_doc('api_football_requester/result_220522_220529.json', 'corpus/')
 # make_doc('api_football_requester/result_la_liga_220523_220529.json', 'corpus/')
 # make_doc('api_football_requester/result_seria_a_220523_220529.json', 'corpus/')
-make_doc('api_football_requester/result_msl_220523_220529.json', 'corpus/')
+make_doc('api_football_requester/result_msl_220529_220605.json', 'corpus/')
