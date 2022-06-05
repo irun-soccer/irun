@@ -47,7 +47,7 @@ def make_tf_idf_docs():
                 continue
 
             for word in line.strip().split(" "):
-                if word == "" or word in stopword:
+                if word == "" or word in stopword or word.isdigit():
                     continue
                 docs_len += 1
                 word = word.lower()
@@ -62,6 +62,7 @@ def make_tf_idf_docs():
             docs_len = 0
             sorted_dict = sorted(docs_tf[name].items(), key=lambda x: x[1], reverse=True)
             docs_tf[name] = {}
+            # print(sorted_dict[:10])
             for key, value in sorted_dict[:LIMIT]:
                 docs_tf[name][key] = value
                 docs_len += value
