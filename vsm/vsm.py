@@ -22,7 +22,7 @@ stopword = []
 def make_tf_idf_docs():
     docs_num = 0
     if not stopword:
-        f = open(r'stopwords.txt', "rt", encoding='utf-8')
+        f = open(r'./vsm/stopwords.txt', "rt", encoding='utf-8')
         s_word = f.readline()
         while True:
             if s_word == "":
@@ -33,7 +33,7 @@ def make_tf_idf_docs():
 
     for name in docs_name_list:
         docs_num += 1
-        f = open(r'../corpus/'+name+'.txt', "rt", encoding='utf-8')
+        f = open(r'corpus/'+name+'.txt', "rt", encoding='utf-8')
         docs_tf[name] = {}
         corpus = []
         docs_len = 0

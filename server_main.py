@@ -1,4 +1,5 @@
 from flask import Flask, request
+from vsm import vsm
 
 app = Flask(__name__)
 
