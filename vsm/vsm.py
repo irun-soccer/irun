@@ -37,6 +37,7 @@ def make_tf_idf_docs():
         docs_tf[name] = {}
         corpus = []
         docs_len = 0
+
         while True:
             line = f.readline()
             corpus.append(line)
@@ -57,7 +58,6 @@ def make_tf_idf_docs():
                     docs_tf[name][word] = 1
                     if word not in docs_df:
                         docs_df[word] = 0
-
         if len(docs_tf[name]) > LIMIT:
             docs_len = 0
             sorted_dict = sorted(docs_tf[name].items(), key=lambda x: x[1], reverse=True)
@@ -67,6 +67,9 @@ def make_tf_idf_docs():
                 docs_len += value
 
         f.close()
+        # normalize
+        for word, tf in docs_tf[name].items():
+            docs_tf[name][word] = np.log1p(tf / docs_len)
 
     return docs_tf
 
@@ -105,7 +108,7 @@ def run(query, query_name=""):
     x, y = [], []
     # print cos sim
     for key, value in cos_sim.items():
-        print(key, ": ", value, len(docs_tf[key]))
+        print(key, ": ", value)
         tmp = key.split("-")
         if tmp[0] == "0.0":
             tmp[0] = "5.0"
