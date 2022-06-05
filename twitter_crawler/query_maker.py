@@ -37,3 +37,4 @@ def make_query_string(name, date):
         for token in tokens:
             query_string += token + ' '
         query_string += '\n'
+    return query_string
