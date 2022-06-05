@@ -73,8 +73,6 @@ ao
 apart
 apparently
 appear
-appreciate
-appropriate
 approximately
 aq
 ar
@@ -129,7 +127,6 @@ begins
 behind
 being
 beings
-believe
 below
 beside
 besides
@@ -198,7 +195,6 @@ co.
 com
 come
 comes
-computer
 con
 concerning
 consequently
@@ -273,7 +269,6 @@ ec
 ed
 edu
 ee
-effect
 eg
 eh
 eight
@@ -305,7 +300,6 @@ everyone
 everything
 everywhere
 ex
-exactly
 example
 except
 f
@@ -442,9 +436,6 @@ herse��
 hes
 hi
 hid
-high
-higher
-highest
 him
 himself
 himse��
@@ -485,8 +476,6 @@ ill
 im
 immediate
 immediately
-importance
-important
 in
 inasmuch
 inc
@@ -502,10 +491,6 @@ inside
 insofar
 instead
 int
-interest
-interested
-interesting
-interests
 into
 invention
 inward
@@ -524,7 +509,6 @@ itd
 itll
 its
 itself
-itse��
 ive
 j
 je
@@ -661,7 +645,6 @@ mw
 mx
 my
 myself
-myse��
 mz
 n
 na
@@ -673,8 +656,6 @@ nd
 ne
 near
 nearly
-necessarily
-necessary
 need
 needed
 needing
@@ -712,7 +693,6 @@ not
 noted
 nothing
 notwithstanding
-novel
 now
 nowhere
 np
@@ -804,7 +784,6 @@ points
 poorly
 possible
 possibly
-potentially
 pp
 pr
 predominantly
@@ -814,10 +793,7 @@ presenting
 presents
 presumably
 previously
-primarily
 probably
-problem
-problems
 promptly
 provided
 provides
@@ -890,10 +866,7 @@ seen
 sees
 self
 selves
-sensible
 sent
-serious
-seriously
 seven
 seventy
 several
@@ -923,8 +896,6 @@ shows
 si
 side
 sides
-significant
-significantly
 similar
 similarly
 since
@@ -954,7 +925,6 @@ sometimes
 somewhat
 somewhere
 soon
-sorry
 specifically
 specified
 specify
@@ -965,13 +935,10 @@ state
 states
 still
 stop
-strongly
 su
 sub
 substantially
-successfully
 such
-sufficiently
 suggest
 sup
 sure
@@ -995,9 +962,6 @@ tf
 tg
 th
 than
-thank
-thanks
-thanx
 that
 that'll
 that's
@@ -1049,8 +1013,6 @@ thinks
 third
 thirty
 this
-thorough
-thoroughly
 those
 thou
 though
@@ -1124,9 +1086,6 @@ upwards
 us
 use
 used
-useful
-usefully
-usefulness
 uses
 using
 usually
@@ -1135,7 +1094,6 @@ uy
 uz
 v
 va
-value
 various
 vc
 ve
@@ -1151,10 +1109,6 @@ vols
 vs
 vu
 w
-want
-wanted
-wanting
-wants
 was
 wasn
 wasn't
@@ -1232,7 +1186,6 @@ widely
 width
 will
 willing
-wish
 with
 within
 without
