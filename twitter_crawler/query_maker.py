@@ -14,17 +14,26 @@ def get_player_nameset(match_json_file):
             names.update(map(lambda x: x.lower(), player_name.split()))
     return names
 
-NAME = 'Thibaut Courtois'
-DATE = '2022-05-28'
-RATING = '9.0'
+def make_query_file(name, date):
+    with open(f'vsm/test_query/{name}.txt', 'a',  encoding='UTF-8') as ff:
+        replies = get_replies(name, date)
+        for text in replies:
+            text = re.sub('[“”‘]', "", text)
+            text = re.sub('’', "'", text) # replace single quotation marks
+            text = re.sub('(@[A-Za-z0-9]+)|(\w+:\/\/\S+)', '', text) # remove mention, link
+            tokens = tensorflow.keras.preprocessing.text.text_to_word_sequence(text) # tokenize
+            for token in tokens:
+                ff.write(token + ' ')
+            ff.write('\n')
 
-with open(f'vsm/test_query/{NAME}_{RATING}.txt', 'a',  encoding='UTF-8') as ff:
-    replies = get_replies(NAME, DATE)
+def make_query_string(name, date):
+    query_string = ""
+    replies = get_replies(name, date)
     for text in replies:
         text = re.sub('[“”‘]', "", text)
         text = re.sub('’', "'", text) # replace single quotation marks
         text = re.sub('(@[A-Za-z0-9]+)|(\w+:\/\/\S+)', '', text) # remove mention, link
         tokens = tensorflow.keras.preprocessing.text.text_to_word_sequence(text) # tokenize
         for token in tokens:
-            ff.write(token + ' ')
-        ff.write('\n')
+            query_string += token + ' '
+        query_string += '\n'
