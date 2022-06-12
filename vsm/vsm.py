@@ -125,7 +125,7 @@ def run(query, query_name=""):
     # plt.show()
     plt.savefig('./image.jpg')
 
-    return "relevant docs: " + max(cos_sim, key=cos_sim.get)
+    return max(cos_sim, key=cos_sim.get)
 
 
 def get_image_name():
