@@ -1,6 +1,7 @@
 import vsm
+import result_converter
 
-query_name = "Thibaut Courtois_9.0.txt"
+query_name = "Vinícius Júnior_7.0.txt"
 
 f = open(r'./vsm/test_query/' + query_name, 'rt', encoding='utf-8')
 query = []
@@ -12,4 +13,8 @@ while True:
         continue
     query.append(line.strip().split(" "))
 query = " ".join(sum(query, []))
-print(vsm.run(query, query_name))
+result = vsm.run(query, query_name)
+rating = result_converter.convert(result.values())
+
+print(result)
+print(rating)
