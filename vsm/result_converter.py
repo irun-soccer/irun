@@ -1,6 +1,9 @@
-max_value_weight = 10
+max_value_weight = 5
 
 def convert(result):
+    if type(result) == dict:
+        result = list(result.values())
+
     result[result.index(max(result))] *= max_value_weight
 
     normalized_result = list(map(lambda x: x/sum(result), result))

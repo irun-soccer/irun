@@ -14,7 +14,7 @@ while True:
     query.append(line.strip().split(" "))
 query = " ".join(sum(query, []))
 result = vsm.run(query, query_name)
-rating = result_converter.convert(result.values())
+rating = result_converter.convert(result)
 
 print(result)
 print(rating)
