@@ -1,6 +1,6 @@
 from math import exp
 
-exp_multiple = 5
+exp_multiple = 3
 
 def convert(result):
     if type(result) == dict:
